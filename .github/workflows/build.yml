@@ -16,8 +16,8 @@ jobs:
         with: { gradle-version: 8.7 }
       - run: unzip -q Vortera27.zip
       - name: Build
-        run: cd Vortera27 && gradle assembleDebug --no-daemon -Pvc=${{ github.run_number }} -Psburl="${{ secrets.SUPABASE_URL }}" -Psbkey="${{ secrets.SUPABASE_KEY }}"
-      - run: cp Vortera27/app/build/outputs/apk/debug/app-debug.apk Vortera27.apk
+        run: cd Vortera27 && gradle assembleRelease --no-daemon -Pvc=${{ github.run_number }} -Psburl="${{ secrets.SUPABASE_URL }}" -Psbkey="${{ secrets.SUPABASE_KEY }}" -Pytkey="${{ secrets.YT_API_KEY }}"
+      - run: cp Vortera27/app/build/outputs/apk/release/app-release.apk Vortera27.apk
       - uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ github.run_number }}
